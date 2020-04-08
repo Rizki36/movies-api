@@ -1,11 +1,10 @@
-import _ from 'lodash';
-import $ from 'jquery';
-import '../node_modules/@fortawesome/fontawesome-free/js/all.js';
+import $ from 'jquery'; 
+import './modal/animate.min.css';
 import './style.css';
 
-$('a').on('click',function(e){
-    e.preventDefault()
-    $('a').closest('li').removeClass('active');
-    $(this).closest('li').addClass('active');
-})
+// import _ from 'lodash';
 
+import main from './script/view/main.js';
+
+
+document.addEventListener("DOMContentLoaded",main)
