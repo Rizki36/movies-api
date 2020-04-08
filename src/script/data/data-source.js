@@ -10,7 +10,7 @@ class DataSource{
     
     // class DataSource
     getMovies(page='1',endpoint='trending/movie/week'){
-        return fetch(`${this.baseUrl}/${endpoint}?page=${page}`,{
+        fetch(`${this.baseUrl}/${endpoint}?page=${page}`,{
             method:'Get',
             headers:{
                 'Authorization': `Bearer ${this.token}`,
@@ -18,12 +18,8 @@ class DataSource{
                 'Content-Type' :'application/json'
             }
          })
-        .then(response=>{
-            return response.json();
-        })
-        .then(responseJson=>{
-            return Promise.resolve(responseJson.results);
-        })
+        .then(response=> response.json())
+        //.then(responseJson => Promise.resolve(responseJson.results))
         // .catch(error=>{
         //     this.messageError(error)
         // })
