@@ -4,13 +4,33 @@ class DataSource{
         this.token   = token;
     }
 
-    search(keyword){
-        console.log(keyword)
+    search(keyword,page){
+        // alert(keyword.replace(/\s+/g, '+'))
+        return fetch(`${this.baseUrl}/search/movie?query=${keyword.replace(/\s+/g, '+')}&page=${page}`,{
+            method:'Get',
+            headers:{
+                'Authorization': `Bearer ${this.token}`,
+                'Accept': 'application/json',
+                'Content-Type' :'application/json'
+            }
+        })
+        .then(response=> {
+            return response.json()
+        })
+        .then(responseJson => {
+            if(responseJson) {
+                return Promise.resolve(responseJson)
+             } else {
+                return Promise.reject('Data Kosong')
+             }
+        })
+        .catch(error=>{
+            this.messageError(error)
+        })
     }
     
-    // class DataSource
-    getMovies(page='1',endpoint='trending/movie/week'){
-        fetch(`${this.baseUrl}/${endpoint}?page=${page}`,{
+    getMovies(endpoint,page,query){
+        return fetch(`${this.baseUrl}/${endpoint}?page=${page}${query}`,{
             method:'Get',
             headers:{
                 'Authorization': `Bearer ${this.token}`,
@@ -18,19 +38,48 @@ class DataSource{
                 'Content-Type' :'application/json'
             }
          })
-        .then(response=> response.json())
-        //.then(responseJson => Promise.resolve(responseJson.results))
-        // .catch(error=>{
-        //     this.messageError(error)
-        // })
+        .then(response=> {
+            return response.json()
+        })
+        .then(responseJson => {
+            if(responseJson) {
+                return Promise.resolve(responseJson)
+             } else {
+                return Promise.reject('Data Kosong')
+             }
+        })
+        .catch(error=>{
+            this.messageError(error)
+        })
     }
 
-    render(Movies){
-
+    getGenres(){
+        return fetch(`${this.baseUrl}/genre/movie/list`,{
+            method:'Get',
+            headers:{
+                'Authorization': `Bearer ${this.token}`,
+                'Accept': 'application/json',
+                'Content-Type' :'application/json'
+            }
+        })
+        .then(response=>{
+            return response.json()
+        })
+        .then(responseJson=>{
+            if(responseJson) {
+                return Promise.resolve(responseJson)
+             } else {
+                return Promise.reject('Data Kosong')
+             }
+        })
+        .catch(error=>{
+            this.messageError(error)
+        })
     }
 
     messageError(message = 'Koneksi error'){
         alert(message)
     }
 }
+
 export default DataSource;

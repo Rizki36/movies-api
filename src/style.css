@@ -46,8 +46,6 @@ body{
     width: 80%;
 }
 
-
-
 .nav .input-group #input-search::placeholder{
     color: rgb(172, 172, 172);
 }
@@ -91,6 +89,7 @@ body{
 aside{
     background-color: #191C1F;
     grid-area: aside;
+    
 }
 aside ul{
     margin-top: 30px;
@@ -113,9 +112,20 @@ aside ul li a{
     margin-left: 35px;
     text-decoration: none !important;
     line-height: 40px;
+    cursor: pointer;
+    outline: none;
 }
+
 aside ul li a:hover{
     color: inherit;
+}
+
+aside ul li a small{
+    background-color: rgb(255, 70, 110); 
+    padding: 5px; 
+    border-radius: 5px;
+    color: white;
+    
 }
 
 article{
@@ -123,6 +133,26 @@ article{
     grid-area: article;
     padding: 40px 20px 30px;
     color: rgb(234, 234, 234);
+    overflow: auto;
+}
+
+article ul.pagination{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+article ul.pagination li{
+    padding: 10px;
+    text-align: center;
+} 
+
+article ul.pagination li.active{
+    color: rgb(255, 70, 110);
+} 
+
+article ul.pagination li a{
+    cursor: pointer;
 }
 
 article .title{
@@ -131,13 +161,8 @@ article .title{
     letter-spacing: 2px;
 }
 
-article .container{
-    /* background-color: rgb(57, 60, 65); */
-    display: flex;
-    flex-wrap: wrap;
+card-list{
     margin-top: 50px;
-    /* align-items: center; */
-    justify-content: space-between;
 }
 
 card-item{
@@ -147,89 +172,19 @@ card-item{
     margin-bottom: 30px;
 }
 
-
-/* awal */
-article .container .card{
-    position: relative;
+.show-aside{
     display: flex;
-    /* flex: 0 0 175px; */
-    width: 21%;
-    flex-direction: column;
-    margin-right: 8px;
-    margin-left: 8px;
-    margin-bottom: 30px;
-}
-
-article .container .card .rate{
-    align-self: center;
-    text-align: center;
-    background-color: #FFBD08;
-    min-width: 30px;
-    height: 20px;
-    border-radius: 10px;
-    font-size: 10px;
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-    cursor: pointer;
-}
-
-article .container .card .thumbnail{
-    margin-top: 10px;
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-    cursor: pointer;
-}
-article .container .card .thumbnail:hover{
-}
-
-article .container .card .thumbnail .icon-play{
-    position: absolute;
-    display: flex;
-    background-color: rgba(255, 23, 128, 0.618) ;
-    opacity: 0;
     top: 0;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    transition: .2s;
-    text-align: center;
+    z-index: 300;
 }
 
-article .container .card .thumbnail:hover .icon-play{
-    opacity: 1;
+#btn-back{
+    display: none;
 }
-
-article .container .card .thumbnail img{
-    width: 100%;
-}
-
-article .container .card .title,
-article .container .card .category{
-    cursor: pointer;
-}
-
-article .container .card .title{
-    margin-top: 10px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-article .container .card .category{
-    font-size: 10px;
-    margin-top: 3px;
-    font-weight: normal;
-    color: rgb(160, 174, 188);
-}
-/* akhir */
 
 @media (max-width:800px){
     .nav .input-group #btn-expand{
@@ -243,15 +198,38 @@ article .container .card .category{
         grid-template-areas:
         'logo logo'
         'article article';
-        /* grid-template-rows: auto 1fr;
-        grid-template-columns: 200px 1fr; */
         background-color: #2196F3;
-        height: 100vh;
     }
     .nav{
         display: none;
     }
+
     aside{
         display: none;
+        
+    }
+
+    aside ul{
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    aside ul li{
+        text-align: center;
+    }
+    
+    aside ul li a{
+        margin-left: 0;
+        line-height: 40px;
+        width: 100%;
+    }
+
+    #btn-back{
+        display: block;
+    }
+    
+    aside ul li:hover, aside ul li.active{
+        color: rgb(255, 70, 110);
+        background-color: rgb(35, 38, 42);
     }
 }

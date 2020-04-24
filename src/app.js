@@ -5,6 +5,6 @@ import './style.css';
 // import _ from 'lodash';
 
 import main from './script/view/main.js';
-
+main()
 
 document.addEventListener("DOMContentLoaded",main)

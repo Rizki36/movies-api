@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies</title>
 </head>
-<body>
+<body data-endpoint="trending/movie/week">
     <div class="logo">
         <span class="title">
             <i class="fas fa-compact-disc"></i> Movies
@@ -22,47 +22,23 @@
     </div>
     <aside>
         <ul>
-            <li><a href="">Trending</a></li>
-            <li><a href="">New Release</a></li>
-            <li><a href="">Coming Soon</a></li>
-            <li><a href="">Favourites</a></li>
-            <li><a href="">Watch Later</a></li>
+            <li><a class="item-nav" href="trending/movie/week">Trending</a></li>
+            <li><a class="item-nav" href="movie/upcoming">Coming Soon</a></li>
+            <li><a class="item-nav" href="discover/movie?year">New Release</a></li>
+            <li><a>Favourites &nbsp;<small>Upcoming</small></a></li>
+            <li><a>Watch Later &nbsp; <small>Upcoming</small></a></li>
+            <li id="btn-back"><a>Back</a></li>
         </ul>
     </aside>
     <article>
-        <span class="title">Title Section</span>
-        <div class="container">
-            <div class="card" data-id="1">
-                <div class="rate">5.0</div>
-                <div class="thumbnail">
-                    <span class="icon-play">
-                        Coming Soon
-                    </span>
-                    <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/wmMq5ypRNJbWpdhC9aPjpdx1MMp.jpg" alt="">
-                </div>
-                <span class="title">Judul Film</span>
-                <span class="category">Horor, Mistery</span>
-            </div>
-            <card-item></card-item>
-            <card-item></card-item>
-            <card-item></card-item>
-            <card-item></card-item>
-            <card-item></card-item>
-            <card-item></card-item>
-            <card-item></card-item>
-        </div>
+        <span id="title" class="title">Trending</span>
+        <card-list>
+        </card-list>
+        <ul class="pagination">
+            <li><a data-page=""></a></li>
+            <li class="active"><a data-page="1">1</a></li>
+            <li><a data-page="2">2</a></li>
+        </ul>
     </article>
-
-
-        <!-- <div id="modal">
-
-            <div class="close-modal"> 
-                CLOSE MODAL
-            </div>
-                
-            <div class="modal-content">
-            </div>
-        </div> -->
-    
 </body>
 </html>

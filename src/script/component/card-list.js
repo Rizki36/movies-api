@@ -8,14 +8,37 @@ class CardList extends HTMLElement{
     set movies(movies){
         this._movies = movies;
         this.render()
+        console.log(movies)
     }
 
-    render(){
-        this.shadowDOM.innerHTML = ``
-        this._movies.foreach(movie=>{
+    set genres(genres){
+        this._genres = genres;
+    }
+
+    render(){       
+        this.shadowDOM.innerHTML = `
+        <style>
+        :host{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        </style>
+        `
+        this._movies.forEach(movie=>{
             const CardItem = document.createElement('card-item')
+            let genres = []
+            movie.genre_ids.forEach(genre_id=>{
+                this._genres.forEach(genre=>{
+                    if(genre_id == genre.id){
+                        genres.push(genre.name)
+                    }
+                })
+            })
             CardItem.movie = movie
+            CardItem.genres = genres.join(', ')
             this.shadowDOM.appendChild(CardItem)
         })
     }
 }
+customElements.define('card-list',CardList);
