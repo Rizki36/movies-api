@@ -3,31 +3,6 @@ class DataSource{
         this.baseUrl = baseUrl;
         this.token   = token;
     }
-
-    search(keyword,page){
-        // alert(keyword.replace(/\s+/g, '+'))
-        return fetch(`${this.baseUrl}/search/movie?query=${keyword.replace(/\s+/g, '+')}&page=${page}`,{
-            method:'Get',
-            headers:{
-                'Authorization': `Bearer ${this.token}`,
-                'Accept': 'application/json',
-                'Content-Type' :'application/json'
-            }
-        })
-        .then(response=> {
-            return response.json()
-        })
-        .then(responseJson => {
-            if(responseJson) {
-                return Promise.resolve(responseJson)
-             } else {
-                return Promise.reject('Data Kosong')
-             }
-        })
-        .catch(error=>{
-            this.messageError(error)
-        })
-    }
     
     getMovies(endpoint,page,query){
         return fetch(`${this.baseUrl}/${endpoint}?page=${page}${query}`,{

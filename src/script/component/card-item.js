@@ -109,7 +109,6 @@ class CardItem extends HTMLElement{
             }
         }
         
-        
         @media (min-width:768px){
             :host{
                 width: 21%;
