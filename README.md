@@ -5,4 +5,4 @@
 - Data Source         : Api TMDb
 
 ## Menjalankan aplikasi
-dist/index.html
+- dist/index.html
